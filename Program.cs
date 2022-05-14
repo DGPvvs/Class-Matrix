@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Class_Matrix
 {
@@ -301,7 +302,7 @@ namespace Class_Matrix
         /// </summary>
         /// <param name="element"></param>
         /// <returns></returns>
-        public Queue<Point> FoundAllElementPositions(T element)
+        public IEnumerable<Point> FoundAllElementPositions(T element)
         {
             Queue<Point> result = new Queue<Point>();
 
