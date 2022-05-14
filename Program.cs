@@ -298,7 +298,7 @@ namespace Class_Matrix
         }// void SetSpaceSeparator(string newSpaceSeparator)
 
         /// <summary>
-        /// IEnumerable<Point> FoundAllElementPositions(T element) - метод връщашт колекция с координати на всички позиции където е намерен символа element
+        /// IEnumerable<Point> FoundAllElementPositions(T element) - метод връщащ колекция с координати на всички позиции където е намерен символа element
         /// </summary>
         /// <param name="element"></param>
         /// <returns></returns>
