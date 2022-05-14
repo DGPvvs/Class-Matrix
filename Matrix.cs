@@ -271,7 +271,7 @@ namespace Class_Matrix
         }// void SetSpaceSeparator(string newSpaceSeparator)
 
         /// <summary>
-        /// Queue<Point> FoundAllElementPositions(T element) - метод връщашт колекция с координати на всички позиции където е намерен символа element
+        /// IEnumerable<Point> FoundAllElementPositions(T element) - метод връщашт колекция с координати на всички позиции където е намерен символа element
         /// </summary>
         /// <param name="element"></param>
         /// <returns></returns>
@@ -293,8 +293,8 @@ namespace Class_Matrix
                 }
             }
 
-            return (IEnumerable<Point>)result;
-        }// Queue<Point> FoundAllElementPositions(T element)
+            return result as IEnumerable<Point>;
+        }// IEnumerable<Point> FoundAllElementPositions(T element)
 
         /// <summary>
         /// override string ToString() връща стринг съдържаш представянe на текущото състояние на матрицата
