@@ -293,7 +293,7 @@ namespace Class_Matrix
                 }
             }
 
-            return result;
+            return (IEnumerable<Point>)result;
         }// Queue<Point> FoundAllElementPositions(T element)
 
         /// <summary>
