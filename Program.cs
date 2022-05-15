@@ -101,10 +101,7 @@ namespace Class_Matrix
 
             set
             {
-                bool isValid = ((value.Row >= 0) && (value.Row < this.MaxLengthRow));
-                isValid = ((isValid) && (value.Col >= 0) && (value.Col < this.matrix[value.Row].Length));
-
-                if (isValid)
+                if (this.IsValidIndex(value))
                 {
                     this.currentPoint = value;
                 }
@@ -126,10 +123,7 @@ namespace Class_Matrix
 
             set
             {
-                bool isValid = ((value.Row >= 0) && (value.Row < this.MaxLengthRow));
-                isValid = ((isValid) && (value.Col >= 0) && (value.Col < this.matrix[value.Row].Length));
-
-                if (isValid)
+                if (this.IsValidIndex(value))
                 {
                     this.chekPoint = value;
                 }
@@ -139,6 +133,19 @@ namespace Class_Matrix
                 }
             }
         }
+
+        /// <summary>
+        /// bool IsValidIndex(Point point) Метод проверяващ валидността на координатите
+        /// </summary>
+        /// <param name="point"></param>
+        /// <returns></returns>
+        public bool IsValidIndex(Point point)
+        {
+            bool isValid = ((point.Row >= 0) && (point.Row < this.MaxLengthRow));
+            isValid = ((isValid) && (point.Col >= 0) && (point.Col < this.matrix[point.Row].Length));
+
+            return isValid;
+        }// bool IsValidIndex(Point point)
 
         /// <summary>
         /// int MaxLengthRow пропърти връщащо броя на редовете в матрицата
