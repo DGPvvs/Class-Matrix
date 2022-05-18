@@ -147,7 +147,7 @@ namespace Class_Matrix
 
 		/// <summary>
 		/// Matrix(string newSpaceSeparator, int newRow, int newCol = 0) - конструктор създаващ празна матрица с размери newRow и newCol
-		/// задава стойностите на maxLengthRow, rangeIndexes и spaceSeparator 
+		/// задава стойностите на maxLengthRow и spaceSeparator 
 		/// </summary>
 		/// <param name="newRow"></param>
 		/// <param name="newCol"></param>
@@ -159,7 +159,7 @@ namespace Class_Matrix
 
         /// <summary>
         /// Matrix(T[,] newMatrix, string newSpaceSeparator) Конструктор задаващ външна матрица и установяващ newSpaceSeparator
-        /// задава стойностите на maxLengthRow, rangeIndexes и spaceSeparator
+        /// задава стойностите на maxLengthRow и spaceSeparator
         /// </summary>
         /// <param name="newMatrix"></param>
         /// <param name="newIsWall"></param>
@@ -344,7 +344,9 @@ namespace Class_Matrix
         public string GetChessCoordinates(Point position) => $"{((char)((int)'a' + position.Col)).ToString()}{position.Row + 1}";//string GetChessCoordinates(Point position)
 
         /// <summary>
-        /// Point ChangeCurrentPosition(Point newPoint, int stepRow, int stepCol) - метод превъртащ координатите на currentPoint при излизане от матрицата 
+        /// Point ChangeCurrentPosition(Point newPoint, int stepRow, int stepCol) - метод задаващ нови координати на пролето currentPoint
+        /// при превъртане на координатите на матрицата - при превъртане по хоризонтал, новите координати сочат срещуположната колона
+        /// при превъртане по вертикал новите координати сочат срещуположният ред
         /// </summary>
         /// <param name="newPoint"></param>
         /// <param name="stepRow"></param>
@@ -362,12 +364,14 @@ namespace Class_Matrix
                 result = new Point(this.MaxLengthRow + (-1) * newPoint.Row * stepRow, newPoint.Col);
             }
 
+            this.CurrentPoint = result;
+
             return result;
         }// Point ChangeCurrentPosition(Point newPoint)
 
         /// <summary>
         /// void CreateMatrix(T[,] newMatrix, string newSpaceSeparator, int newRow, int newCol) създава самата матрица
-        /// Метода и валиден както за правоъгълни матрици, така и за назъбени
+        /// Метода и валиден както за правоъгълни матрици, така и за назъбени матрици
         /// </summary>
         /// <param name="newMatrix"></param>
         /// <param name="newSpaceSeparator"></param>
@@ -404,7 +408,7 @@ namespace Class_Matrix
         }// void CreateMatrix(T[,] newMatrix, int newRow, int newCol, string newSpaceSeparator)
 
         /// <summary>
-        /// void SetLength() задава стойности на maxLengthRow и rangeIndexes 
+        /// void SetLength() задава стойности на maxLengthRow
         /// </summary>
         private void SetLength()
         {
