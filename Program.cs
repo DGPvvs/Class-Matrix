@@ -251,12 +251,19 @@ namespace Class_Matrix
                 result = new Point(this.MaxLengthRow + (-1) * newPoint.Row * stepRow, newPoint.Col);
             }
 
-            this.CurrentPoint = result;
+            try
+            {
+                this.CurrentPoint = result;
+            }
+            catch (IndexOutOfRangeException)
+            {
+
+                result = new Point(-1, -1);
+            }
 
             return result;
-        }
 
-        private void CreateMatrix(T[,] newMatrix, string newSpaceSeparator, int newRow, int newCol)
+            private void CreateMatrix(T[,] newMatrix, string newSpaceSeparator, int newRow, int newCol)
         {
             this.matrix = new T[newRow][];
 

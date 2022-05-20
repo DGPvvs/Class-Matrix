@@ -347,6 +347,8 @@ namespace Class_Matrix
         /// Point ChangeCurrentPosition(Point newPoint, int stepRow, int stepCol) - метод задаващ нови координати на пролето currentPoint
         /// при превъртане на координатите на матрицата - при превъртане по хоризонтал, новите координати сочат срещуположната колона
         /// при превъртане по вертикал новите координати сочат срещуположният ред
+        /// ЗАБЕЛЕЖКА: При превъртане по вертикал по назъбена матрица на срещоположния ред може да не съществува колона с индекс Col
+        /// В този случай currentPoint не променя стойността си, а методът връща обект от тип Point със стойности -1 за ред и колона 
         /// </summary>
         /// <param name="newPoint"></param>
         /// <param name="stepRow"></param>
@@ -364,7 +366,15 @@ namespace Class_Matrix
                 result = new Point(this.MaxLengthRow + (-1) * newPoint.Row * stepRow, newPoint.Col);
             }
 
-            this.CurrentPoint = result;
+			try
+			{
+                this.CurrentPoint = result;
+            }
+			catch (IndexOutOfRangeException)
+			{
+
+                result = new Point(-1, -1);
+			}            
 
             return result;
         }// Point ChangeCurrentPosition(Point newPoint)
